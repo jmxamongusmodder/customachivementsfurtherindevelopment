@@ -161,7 +161,6 @@ class Achievements {
 		for (i in 0...directories.length) {
 			var directory:String = directories[i] + 'achievements/';
 
-			//trace(directory);
 			if (FileSystem.exists(directory)) {
 
 				var listOfAchievements:Array<String> = CoolUtil.coolTextFile(directory + 'achievementList.txt');
@@ -240,7 +239,7 @@ class AttachedAchievement extends FlxSprite {
 				imagePath = Paths.image(tag);
 			}
 
-			var index:Int = Achievements.getAchievementIndex(tag);
+			var index:Int = Achievements.getAchievementIndex(Achievements.get(tag).icon); //Gets the tag easily.
 			if (isModIcon) index = 0;
 
 			trace(imagePath);
