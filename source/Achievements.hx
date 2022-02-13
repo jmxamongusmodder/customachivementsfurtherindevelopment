@@ -182,8 +182,6 @@ class Achievements {
 					if (!FileSystem.isDirectory(path) && file.endsWith('.json') && !loadedAchievements.exists(cutName) && cutName != PlayState.othersCodeName) {
 						loadedAchievements.set(cutName, getAchievementInfo(path));
 					}
-
-					//trace(file);
 				}
 			}
 		}
@@ -236,10 +234,10 @@ class AttachedAchievement extends FlxSprite {
 
 			if (Achievements.loadedAchievements.exists(tag)) {
 				isModIcon = true;
-				imagePath = Paths.image(tag);
+				imagePath = Paths.image(tag); //Achievements.get(tag).icon
 			}
-
-			var index:Int = Achievements.getAchievementIndex(Achievements.get(tag).icon); //Gets the tag easily.
+			
+			var index:Int = Achievements.getAchievementIndex(tag);
 			if (isModIcon) index = 0;
 
 			trace(imagePath);
@@ -287,7 +285,7 @@ class AchievementObject extends FlxSpriteGroup {
 		var modsImage = null;
 		var isModIcon:Bool = false;
 
-		//fucking hell bro
+		//wut
 		/*if (Achievements.loadedAchievements.exists(name)) {
 			isModIcon = true;
 			modsImage = Paths.image(Achievements.loadedAchievements.get(name).icon);
@@ -295,9 +293,6 @@ class AchievementObject extends FlxSpriteGroup {
 
 		var index:Int = Achievements.getAchievementIndex(name);
 		if (isModIcon) index = 0;
-
-		//trace(imagePath);
-		//trace(modsImage);
 
 		var achievementIcon:FlxSprite = new FlxSprite(achievementBG.x + 10, achievementBG.y + 10).loadGraphic((isModIcon ? modsImage : imagePath), true, 150, 150);
 		achievementIcon.animation.add('icon', [index], 0, false, false);
@@ -319,6 +314,7 @@ class AchievementObject extends FlxSpriteGroup {
 		add(achievementName);
 		add(achievementText);
 		add(achievementIcon);
+//              add(CustomAchivementIcon);
 
 		var cam:Array<FlxCamera> = FlxCamera.defaultCameras;
 		if(camera != null) {
