@@ -83,7 +83,7 @@ class Achievements {
 		achievementsStuff = achievementShits;
 
 		#if MODS_ALLOWED
-		//reloadAchievements(); //custom achievements do not work. will add once it doesn't do the duplication bug -bb
+		reloadAchievements();
 		#end
 
 		if(FlxG.save.data != null) {
@@ -237,7 +237,7 @@ class AttachedAchievement extends FlxSprite {
 
 			if (Achievements.loadedAchievements.exists(tag)) {
 				isModIcon = true;
-				imagePath = Paths.image(Achievements.loadedAchievements.get(tag).icon);
+				imagePath = Paths.image(tag);
 			}
 
 			var index:Int = Achievements.getAchievementIndex(tag);
